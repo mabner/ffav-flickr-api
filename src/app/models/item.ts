@@ -1,2 +1,14 @@
-export interface Item {
+import { MediaUrl } from './media-url';
+
+export interface Item
+{
+    title: string;
+    link: string;
+    media: MediaUrl;
+    date_taken: Date;
+    description: string;
+    published: Date;
+    author: string;
+    author_id: string;
+    tags: string;
 }
