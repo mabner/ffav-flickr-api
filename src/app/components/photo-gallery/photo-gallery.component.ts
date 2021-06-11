@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FlickrResponse } from 'src/app/models/flickr-response';
-import { FlickrService } from 'src/app/services/flickr.service';
+import { FlickrResponse } from '../../models/flickr-response';
+import { FlickrService } from '../../services/flickr.service';
 
 @Component( {
   selector: 'app-photo-gallery',

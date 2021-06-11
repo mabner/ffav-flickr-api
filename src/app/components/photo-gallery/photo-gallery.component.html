@@ -1,1 +1,17 @@
-<p>photo-gallery works!</p>
+<div class="card-columns">
+  <div class="card" *ngFor="let item of flickrResponse?.items">
+    <img class="card-img-top" [src]="item.media.mUrl" [alt]="item.title" />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">
+        Uploaded por {{ item.author_id }} em
+        {{ item.published | date: "medium" }}
+      </p>
+      <p class="card-text">{{ item.title }}</p>
+      <hr />
+      <p class="card-text">
+        <small class="text-muted">{{ item.tags }}</small>
+      </p>
+    </div>
+  </div>
+</div>
