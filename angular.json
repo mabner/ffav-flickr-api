@@ -67,7 +67,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {},
+          "options": {
+            "proxyConfig": "./proxy.config.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "flickr-api:build:production"
