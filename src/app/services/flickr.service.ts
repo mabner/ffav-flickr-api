@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 } )
 export class FlickrService
 {
-  flickrUrl = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
+  private galeryUrl = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
 
   constructor ( private http: HttpClient ) { }
 
   getPhotos (): Observable<FlickrResponse>
   {
-    return this.http.get<FlickrResponse>( this.flickrUrl );
+    return this.http.get<FlickrResponse>( this.galeryUrl );
   }
 }
