@@ -12,7 +12,7 @@
 
 <script>
 	import HeroSection from '../components/HeroSection.vue';
-	import RecentPhotos from '@/components/RecentPhotos';
+	import RecentPhotos from '../components/RecentPhotos.vue';
 	// import PlacePhotos from '@/components/PlacePhotos';
 
 	// @ is an alias to /src

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import SearchResults from '../views/SearchResults.vue';
 import Places from '../views/Places.vue';
+import FishPhoto from '../views/FishPhoto.vue';
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,11 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: Home,
+	},
+	{
+		path: '/aquarium',
+		name: 'fishPhoto',
+		component: FishPhoto,
 	},
 	{
 		path: '/recent',
