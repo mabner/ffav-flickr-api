@@ -1,15 +1,13 @@
 <template>
-  <div class="header">
-    <h1>Flickr API</h1>
-  </div>
+	<div class="header">
+		<h1>Flickr API</h1>
+	</div>
 </template>
 
 <script>
-export default {
-  name: "Header",
-}
+	export default {
+		name: 'Header',
+	};
 </script>
 
-<style>
-
-</style>
+<style></style>
