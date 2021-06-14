@@ -31,6 +31,11 @@
 		created() {
 			this.search();
 		},
+		watch: {
+			tag() {
+				this.search();
+			},
+		},
 		data() {
 			return {
 				loading: false,
