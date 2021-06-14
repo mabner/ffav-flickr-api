@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Search from '../views/Search.vue';
+import SearchResults from '../views/SearchResults.vue';
 
 Vue.use(VueRouter);
 
@@ -13,8 +13,10 @@ const routes = [
   },
   {
     path: '/search',
-    name: 'Search',
-    component: Search,
+    // path: '/search/:tag',
+    name: 'SearchResults',
+    component: SearchResults,
+    props: true,
   },
   {
     path: '/about',

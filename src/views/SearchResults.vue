@@ -23,19 +23,22 @@
     <div class="wrapper">
       <p v-if="loading" class="text-centered">Carregando...</p>
       <ul v-else class="image-card-grid">
-        <image-card v-for="image in cleanImages" :key="image.id" :image="image" />
+        <image-card
+          v-for="image in cleanImages"
+          :key="image.id"
+          :image="image"
+        />
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import flickr from "../services/flickr.js";
 import ImageCard from "../components/ImageCard.vue";
-import config from "../../config";
 
 export default {
-  name: "home",
+  name: "SearchResults",
   components: {
     ImageCard,
   },
@@ -46,40 +49,33 @@ export default {
       images: [],
     };
   },
+  computed: {
+    cleanImages() {
+      return this.images.filter((image) => image.url_n);
+    },
+  },
+
   methods: {
     search() {
       // Turns loading message on
       this.loading = true;
 
-      this.fetchImages().then((response) => {
-        this.images = response.data.photos.photo;
+      this.fetchImages();
 
-        // Turns loading message off
-        this.loading = false;
-      });
-      console.log("Buscando por: ", this.tag);
+      // Turns loading message off
+      this.loading = false;
     },
     fetchImages() {
-      return axios({
-        method: "get",
-        url: "https://api.flickr.com/services/rest",
-        params: {
-          // Full list of parameters: https://www.flickr.com/services/api/flickr.photos.search.html
-          method: "flickr.photos.search",
-          api_key: config.api_key,
-          tags: this.tag,
-          extras: "url_n, owner_name, date_taken, views",
-          page: 1,
-          format: "json",
-          nojsoncallback: 1,
-          per_page: 30,
-        },
+      return flickr("photos.search", {
+        // Full list of parameters: https://www.flickr.com/services/api/flickr.photos.search.html
+
+        tags: this.tag,
+        extras: "url_n, owner_name, description, date_taken, views",
+        page: 1,
+        per_page: 30,
+      }).then((response) => {
+        this.images = response.data.photos.photo;
       });
-    },
-  },
-  computed: {
-    cleanImages() {
-      return this.images.filter((image) => image.url_n);
     },
   },
 };
