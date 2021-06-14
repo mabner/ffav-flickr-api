@@ -11,28 +11,21 @@
     </form>
     <p v-if="loading">Carregando...</p>
     <ul v-else>
-      <li v-for="image in images" :key="image.id">
-        <img :src="image.url_n" :alt="image.title" />
-        <div>
-          <p v-if="image.title">{{ image.title }}</p>
-          <p v-else>No Title Found</p>
-          <p>Por {{ image.ownername }}</p>
-          <section>
-            <p>{{ image.datetaken }}</p>
-            <p>Visualizações: {{ image.views }}</p>
-          </section>
-        </div>
-      </li>
+      <image-card v-for="image in images" :key="image.id" :image="image" />
     </ul>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import ImageCard from '../components/ImageCard.vue';
 import config from '../../config';
 
 export default {
   name: 'home',
+  components: {
+    ImageCard,
+  },
   data() {
     return {
       tag: '',
