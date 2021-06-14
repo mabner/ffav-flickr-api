@@ -1,24 +1,38 @@
-# flickr-api
+# FlickrApi
 
-## Project setup
-```
+Curso: Desenvolvimento web Full Stack
+Disciplina: Frameworks front-end: Angular & Vue
+Professor: Samuel Martins
+
+## Trabalho Final
+
+O trabalho final da disciplina consiste em desenvolver uma **solução livre**, à sua escolha, que atenda todos os requisitos listados abaixo.
+
+- A solução deve ter um sistema de rotas próprio. Você deverá implementar no mínimo 3 rotas;
+- A solução deve possuir, no mínimo 7 componentes próprios;
+- A solução deverá consumir dados de alguma API externa, ficando a seu critério escolher a API que desejar (com exceção da API The Movie Database 😃). Exemplos: Reddit, Marvel, Google, Maps;
+
+### O que será avaliado
+
+- Componentização
+  - Se a aplicação está bem componentizada, se o código é reaproveitável e se as pastas estão bem organizadas;
+- Funcionalidade
+- Se todos os critérios foram cumpridos e a aplicação funciona como esperado. Cada requisito será avaliado individualmente.
+
+## Setup do projeto
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+### Compilar e recarregar para desenvolvimento
+
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+### Compilar e minificar para produção
+
+```bash
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
