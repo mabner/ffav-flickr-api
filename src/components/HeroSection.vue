@@ -26,7 +26,6 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
-		color: white;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -43,8 +42,11 @@
 	.hero-title {
 		font-size: 3rem;
 		margin: 0;
+		color: #0063dc;
 	}
 	.hero-subtitle {
 		font-size: 1.3rem;
+		color: #fff;
+		text-shadow: #000 1px 1px 1px;
 	}
 </style>

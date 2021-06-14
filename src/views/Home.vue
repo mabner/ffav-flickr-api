@@ -1,20 +1,24 @@
 <template>
-  <div class="home">
-    <h1 class="center">FlickrApi</h1>
-    <p>Trabalho desenvolvido utilizando a API do Flickr para pesquisa de imagens.</p>
-  </div>
+	<div class="home">
+		<hero-section
+			backgroundImage="homepage-hero.jpg"
+			title="FlickrAPI"
+			subtitle="Trabalho desenvolvido utilizando a API do Flickr para pesquisa de imagens."
+		/>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-export default {
-  name: "Home",
-  components: {},
-};
+	import HeroSection from '../components/HeroSection.vue';
+	// @ is an alias to /src
+	export default {
+		name: 'Home',
+		components: { HeroSection },
+	};
 </script>
 
 <style>
-body {
-  text-align: center;
-}
+	body {
+		text-align: center;
+	}
 </style>
