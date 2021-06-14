@@ -23,7 +23,7 @@
     <div class="wrapper">
       <p v-if="loading" class="text-centered">Carregando...</p>
       <ul v-else class="image-card-grid">
-        <image-card v-for="image in images" :key="image.id" :image="image" />
+        <image-card v-for="image in cleanImages" :key="image.id" :image="image" />
       </ul>
     </div>
   </div>
@@ -75,6 +75,11 @@ export default {
           per_page: 30,
         },
       });
+    },
+  },
+  computed: {
+    cleanImages() {
+      return this.images.filter((image) => image.url_n);
     },
   },
 };
