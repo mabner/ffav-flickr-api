@@ -8,11 +8,15 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/',
-		name: 'Home',
+		name: 'home',
 		component: Home,
 	},
 	{
-		// path: '/search',
+		path: '/recent',
+		name: 'recentPhotos',
+		component: () => import('../views/RecentPhotos.vue'),
+	},
+	{
 		path: '/search/:tag',
 		name: 'searchResults',
 		component: SearchResults,
