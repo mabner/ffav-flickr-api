@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import SearchResults from '../views/SearchResults.vue';
+import Places from '../views/Places.vue';
 
 Vue.use(VueRouter);
 
@@ -14,13 +15,18 @@ const routes = [
 	{
 		path: '/recent',
 		name: 'recentPhotos',
-		component: () => import('../views/RecentPhotos.vue'),
+		component: () => import('../views/Recent.vue'),
 	},
 	{
 		path: '/search/:tag',
 		name: 'searchResults',
 		component: SearchResults,
 		props: true,
+	},
+	{
+		path: '/places',
+		name: 'Places',
+		component: Places,
 	},
 	{
 		path: '/about',

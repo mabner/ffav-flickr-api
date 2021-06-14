@@ -3,6 +3,7 @@
 		<router-link to="/">Home</router-link> |
 		<router-link to="/recent">Recentes</router-link> |
 		<router-link to="/search">Pesquisar</router-link> |
+		<router-link to="/places">Lugares</router-link> |
 		<router-link to="/about">Sobre</router-link>
 	</div>
 </template>

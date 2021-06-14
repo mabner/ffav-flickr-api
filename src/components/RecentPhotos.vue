@@ -34,9 +34,10 @@
 		},
 		methods: {
 			fetchRecentPhotos() {
-				return flickr('photos.getRecent', {
+				return flickr('photos.getPopular', {
 					extras: 'url_n, owner_name, description, date_taken, views',
 					page: 1,
+					user_id: '59217490@N00',
 					per_page: 3,
 				})
 					.then((response) => {

@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<h1>Flickr API</h1>
+		<h1>Flickr Gallery</h1>
 	</div>
 </template>
 
