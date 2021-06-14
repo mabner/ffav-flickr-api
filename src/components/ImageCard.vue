@@ -1,13 +1,21 @@
 <template>
 	<li class="image-card">
-		<img class="image-card__image" :src="image.url_n" :alt="image.title" />
+		<img
+			class="image-card__image"
+			:class="{ skeleton: loading }"
+			:src="imageUrl"
+			:alt="title"
+		/>
 		<div class="image-card__body">
-			<p v-if="image.title" class="image-title">{{ image.title }}</p>
-			<p v-else class="image-title">No Title Found</p>
-			<p class="image-owner">Por: {{ image.ownername }}</p>
+			<p class="image-title" :class="{ skeleton: loading }">{{ title }}</p>
+			<p class="image-owner" :class="{ skeleton: loading }">{{ byline }}</p>
 			<section class="image-date-view-wrapper">
-				<p class="image-date">Data: {{ image.datetaken | moment }}</p>
-				<p class="image-views">Visualizações: {{ image.views }}</p>
+				<p class="image-date" :class="{ skeleton: loading }">
+					Data: {{ timestamp }}
+				</p>
+				<p class="image-views" :class="{ skeleton: loading }">
+					{{ viewCount }}
+				</p>
 			</section>
 		</div>
 	</li>
@@ -16,9 +24,44 @@
 <script>
 	import moment from 'moment';
 
+	// Base64 image placeholder
+	const TRANSPARENT_GIF =
+		'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
 	export default {
 		name: 'ImageCard',
-		props: ['image'],
+		props: {
+			image: {
+				type: Object,
+				default() {
+					return {};
+				},
+			},
+			loading: {
+				type: Boolean,
+				default: false,
+			},
+		},
+		computed: {
+			imageUrl() {
+				if (this.loading) return TRANSPARENT_GIF;
+				return this.image.url_n;
+			},
+			title() {
+				return this.image.title || 'Untitled Image';
+			},
+			byline() {
+				return `Por: ${this.image.ownername}`;
+			},
+			timestamp() {
+				return moment(this.image.datetaken).format('ll');
+			},
+			viewCount() {
+				const viewOrViews =
+					this.image.views === 1 ? 'visualização' : 'visualizações';
+				return `${this.image.views} ${viewOrViews}`;
+			},
+		},
 		filters: {
 			moment(date) {
 				return moment(date).format('ll');
@@ -74,5 +117,28 @@
 	.image-views {
 		margin-bottom: 0;
 		font-size: 0.8rem;
+	}
+	@keyframes skeleton-glow {
+		from {
+			border-color: rgba(206, 217, 224, 0.2);
+			background: rgba(206, 217, 224, 0.2);
+		}
+		to {
+			border-color: rgba(92, 112, 128, 0.2);
+			background: rgba(92, 112, 128, 0.2);
+		}
+	}
+	.skeleton {
+		animation: skeleton-glow 1s linear infinite alternate;
+		background-clip: border-box;
+		background-clip: padding-box !important;
+		background: rgba(206, 217, 224, 0.2) !important;
+		border-color: rgba(206, 217, 224, 0.2) !important;
+		border-radius: 2px;
+		box-shadow: none !important;
+		color: transparent !important;
+		cursor: default;
+		pointer-events: none;
+		user-select: none;
 	}
 </style>

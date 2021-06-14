@@ -1,18 +1,18 @@
 <template>
 	<div class="wrapper">
-		<p v-if="loading" class="text-centered">
-			Carregando...
-		</p>
-		<div v-else>
-			<h1>Resultados de: "{{ tag }}"</h1>
-			<ul class="image-card-grid">
-				<image-card
-					v-for="image in cleanImages"
-					:key="image.id"
-					:image="image"
-				/>
-			</ul>
-		</div>
+		<h1>Resultados de: "{{ tag }}"</h1>
+
+		<ul v-if="!loading" class="image-card-grid">
+			<image-card
+				v-for="image in cleanImages"
+				:key="image.id"
+				:image="image"
+			/>
+		</ul>
+
+		<ul v-else class="image-card-grid">
+			<image-card v-for="n in 6" :key="n" :loading="true" />
+		</ul>
 	</div>
 </template>
 
@@ -43,6 +43,9 @@
 			};
 		},
 		computed: {
+			isTagEmpty() {
+				return !this.tag || this.tag.length === 0;
+			},
 			cleanImages() {
 				return this.images.filter((image) => image.url_n);
 			},
@@ -58,6 +61,12 @@
 				// Turns loading message off
 				this.loading = false;
 			},
+			// search() {
+			// 	if (!this.isTagEmpty) {
+			// 		this.loading = true;
+			// 		this.fetchImages();
+			// 	}
+			// },
 			fetchImages() {
 				return flickr('photos.search', {
 					// Full list of parameters: https://www.flickr.com/services/api/flickr.photos.search.html
